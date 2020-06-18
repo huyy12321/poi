@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.poi.mapper.PhwdCustomerQrCodeAddMapper">
+
+<!--    ,BD_LONGITUDE,BD_LATITUDE,PRECISE-->
+    <insert id="batchSave">
+        insert into PHWD_CUSTOMER_QR_CODE_ADD (CUST_CODE,CUST_NAME,CUST_ADDRESS ,ARTIFICIAL_PERSON,PHONE_NUMBER,PHONE_NUMBER1,CITY,VALUE2,CUST_ID)
+        values
+        <foreach collection="list" separator="," item="shop" index="a">
+            (#{shop.code},#{shop.shopName},#{shop.address},#{shop.linkName},#{shop.phone},null,#{shop.city},#{shop.value2},#{a}+#{id})
+        </foreach>
+    </insert>
+
+    <insert id="batchSaveJinHua">
+        insert into PHWD_CUSTOMER_QR_CODE_ADD (CUST_CODE,CUST_NAME,CUST_ADDRESS ,ARTIFICIAL_PERSON,PHONE_NUMBER,PHONE_NUMBER1,CITY,VALUE2,CUST_ID)
+        values
+        <foreach collection="list" separator="," item="shop" index="a">
+            (#{shop.code},#{shop.shopName},#{shop.address},#{shop.linkName},#{shop.phone},null,#{shop.city},#{shop.value2},#{a}+#{id})
+        </foreach>
+    </insert>
+</mapper>

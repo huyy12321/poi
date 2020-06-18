@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+<body>
+<button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>上传文件</button>
+<button type="button" class="layui-btn layui-btn-normal" id="merge">合并到主表</button>
+</body>
+<script src="../layui/layui.all.js"></script>
+<script>
+    layui.use('upload', function() {
+        var $ = layui.jquery
+            , upload = layui.upload;
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#test3'
+            , url: 'http://localhost:8080/test/upload'
+            , accept: 'file' //普通文件
+            , done: function (res) {
+                layer.msg('上传成功');
+                console.log(res);
+            }
+        });
+
+        $("#merge").click(function () {
+            $.get("http://localhost:8080/test/merge",function (data) {
+                alert(data);
+            });
+        });
+    });
+
+
+</script>
+</html>
